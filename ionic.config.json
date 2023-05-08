@@ -1,0 +1,7 @@
+{
+  "name": "soft-eng",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
