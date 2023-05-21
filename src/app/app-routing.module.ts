@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'quiz-list',
     loadChildren: () => import('../app/pages/quiz-list/quiz-list.module').then( m => m.QuizListPageModule)
   },
+  {
+    path: 'settings',
+    loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule)
+  },
 ];
 
 @NgModule({
