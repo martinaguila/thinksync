@@ -9,4 +9,18 @@ export class HomePage {
 
   constructor() {}
 
+
+  ngOnInit(){
+    console.log("Hello")
+
+
+  }
+
+  testClick(){
+    // clicked the button to display the logs
+    console.log("clicked!")
+  }
+
+
+
 }
