@@ -1,21 +1,23 @@
-<ion-app>
+<ion-app [class]="currentMode">
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content">
       <ion-header>
-        <ion-toolbar>
+        <ion-toolbar class="header-toolbar">
           <ion-title class="title">Menu</ion-title>
         </ion-toolbar>
       </ion-header>
 
       <ion-content>
-        <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let menuItem of menuItems">
-            <ion-item [routerLink]="menuItem.url" routerDirection="root">
-              <ion-icon slot="start" [name]="menuItem.icon"></ion-icon>
-              <ion-label class="label">{{ menuItem.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
+        <ion-grid class="theme-grid2">
+          <ion-list class="menu-list">
+            <ion-menu-toggle auto-hide="false" *ngFor="let menuItem of menuItems">
+              <ion-item class="menu-item" [routerLink]="menuItem.url" routerDirection="root">
+                <ion-icon class="title" slot="start" [name]="menuItem.icon"></ion-icon>
+                <ion-label class="label title">{{ menuItem.title }}</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-list>
+        </ion-grid>
       </ion-content>
     </ion-menu>
 
