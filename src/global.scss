@@ -29,3 +29,69 @@
 .no-margin{
   margin: 0;
 }
+
+// .title{
+//   color: red !important;
+// }
+
+
+
+/* Light theme */
+.light-theme {
+
+  .title{
+    color: #000;
+  }
+
+  .header-toolbar{
+    --background: #f5f5f5;
+  }
+  
+  .theme-grid{
+    height: 91%;
+    background: #ffffff;
+  }
+
+  .theme-grid2{
+    height: 100%;
+    background: #ffffff;
+  }
+
+  .menu-list{
+    background: #ffffff;
+  }
+
+  .menu-item{
+    --background: #ffffff;
+  }
+}
+
+/* Dark theme */
+.dark-theme {
+
+  .title{
+    color: #fff;
+  }
+
+  .header-toolbar{
+    --background: #252525;
+  }
+  
+  .theme-grid{
+    height: 91%;
+    background: #1f1f1f;
+  }
+
+  .theme-grid2{
+    height: 100%;
+    background: #1f1f1f;
+  }
+
+  .menu-list{
+    background: #1f1f1f;
+  }
+
+  .menu-item{
+    --background: #1f1f1f;
+  }
+}

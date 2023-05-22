@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ThemeService } from '../../services/theme/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,15 @@ export class HeaderComponent  implements OnInit {
 
   @Input() labelName: string = '';
 
-  constructor() { }
+  currentMode: string = '';
+
+  constructor(
+    private themeService: ThemeService
+  ) {
+    this.themeService.getCurrentMode().subscribe(mode => {
+      this.currentMode = mode;
+    });
+   }
 
   ngOnInit() {}
 
