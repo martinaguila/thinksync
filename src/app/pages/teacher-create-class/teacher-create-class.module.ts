@@ -8,12 +8,15 @@ import { TeacherCreateClassPageRoutingModule } from './teacher-create-class-rout
 
 import { TeacherCreateClassPage } from './teacher-create-class.page';
 
+import { ComponentsModule } from '../../components/component.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TeacherCreateClassPageRoutingModule
+    TeacherCreateClassPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [TeacherCreateClassPage]
 })

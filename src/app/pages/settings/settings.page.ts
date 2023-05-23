@@ -18,7 +18,6 @@ export class SettingsPage implements OnInit {
     private themeService: ThemeService
   ) {
     this.themeService.getCurrentMode().subscribe(mode => {
-      console.log("mode",mode)
       this.currentMode = mode;
     });
    }
