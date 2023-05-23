@@ -1,0 +1,48 @@
+<div [class]="currentMode">
+  <ion-grid>
+    <ion-row>
+      <div class="class-title margin-center">
+        {{ mode }} Class
+      </div>
+    </ion-row>
+  
+    <form [formGroup]="classDataForm">
+      <div class="position-relative">
+        <ion-input
+          class="input-class-form"
+          placeholder="Enter class name"
+          formControlName="className">
+        </ion-input>
+        <span class="span-error" *ngIf="error">Class name taken</span>
+      </div>
+      
+
+      <ion-input
+        class="input-class-form"
+        placeholder="Enter class pass code"
+        type="number"
+        formControlName="classPasscode">
+      </ion-input>
+
+      <ion-row>
+        <ion-col>
+          <ion-button 
+            class="submit" 
+            [ngClass]="classDataForm.invalid ? 'disable-btn' : ''"
+            [disabled]="classDataForm.invalid"
+            (click)="onClickSubmit()"
+            >
+            Submit
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="onClickCancel()" class="cancel">
+            Cancel
+          </ion-button>
+        </ion-col>
+        
+      </ion-row>
+    </form>
+  </ion-grid>
+  
+</div>

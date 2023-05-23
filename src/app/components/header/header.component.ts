@@ -15,6 +15,7 @@ export class HeaderComponent  implements OnInit {
   constructor(
     private themeService: ThemeService
   ) {
+    // call service to check what is the current theme
     this.themeService.getCurrentMode().subscribe(mode => {
       this.currentMode = mode;
     });

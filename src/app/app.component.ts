@@ -15,8 +15,8 @@ export class AppComponent {
       icon: 'home',
     },
     {
-      title: 'Quiz lists',
-      url: '/quiz-list',
+      title: 'Manage Class',
+      url: '/teacher-create-class',
       icon: 'albums-outline',
     },
     {

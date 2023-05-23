@@ -25,6 +25,19 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
+.small-modal{
+  &::part(content){
+    // position: fixed;
+    // left: 50%;
+    // top: 50%;
+    // transform: translate(-50%, -50%);
+    margin: auto;
+    height: auto;
+    width: 90%;
+    border-radius: 25px;
+    background: #FFFFFF;
+  }
+}
 
 .no-margin{
   margin: 0;
@@ -39,6 +52,8 @@
 /* Light theme */
 .light-theme {
 
+  font-family: "okfont-rg";
+
   .title{
     color: #000;
   }
@@ -50,6 +65,7 @@
   .theme-grid{
     height: 91%;
     background: #ffffff;
+    // font-size: 3.2vw;
   }
 
   .theme-grid2{
@@ -69,6 +85,8 @@
 /* Dark theme */
 .dark-theme {
 
+  font-family: "okfont-rg";
+
   .title{
     color: #fff;
   }
@@ -80,6 +98,7 @@
   .theme-grid{
     height: 91%;
     background: #1f1f1f;
+    // font-size: 3.2vw;
   }
 
   .theme-grid2{
@@ -94,4 +113,37 @@
   .menu-item{
     --background: #1f1f1f;
   }
+}
+
+.margin-center{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.input-class-form{
+  // border-radius: 50px;
+  // border: 2px solid #3C00B3;
+  --padding-end: 4vw;
+  --placeholder-color: #858585 !important;
+  background: #F3F3F3;
+  color: #858585;
+  margin-bottom: 8vw;
+}
+
+.cancel{
+  --background: #eb445a;
+  width: 100%;
+}
+
+.submit{
+  width: 100%;
+}
+
+.disable-btn{
+  --background: grey;
+}
+
+.position-relative{
+  position: relative;
 }
