@@ -1,13 +1,66 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>teacher-setup-quiz</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <app-header
+    [labelName]="'Setup Quiz'"
+  ></app-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">teacher-setup-quiz</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-grid class="theme-grid">
+    <form [formGroup]="createDataForm">
+      <div class="position-relative margin-top">
+        <ion-input
+          class="input-class-form"
+          placeholder="Enter quiz title"
+          formControlName="quizTitle">
+        </ion-input>
+        <span class="span-error" *ngIf="error">Quiz name taken</span>
+      </div>
+
+      <ion-row class="no-margin">
+        <ion-col class="no-margin">
+          <ion-input
+            class="input-class-form"
+            placeholder="Enter no. of items"
+            formControlName="quizItems"
+            type="number">
+          </ion-input>
+        </ion-col>
+        <ion-col class="no-margin">
+          <ion-input
+            class="input-class-form"
+            placeholder="Enter no. of choices"
+            formControlName="quizChoices"
+            type="number">
+          </ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-item class="width-100">
+          <ion-label>Select Class</ion-label>
+          <ion-select formControlName="class">
+            <ion-select-option 
+              *ngFor="let item of class" 
+              [value]="item.className">{{item.className}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-row>
+
+      <ion-row class="margin-top">
+        <ion-col>
+          <ion-button 
+            class="submit" 
+            [disabled]="createDataForm.invalid"
+            (click)="onClickSubmit()"
+            >
+            Submit
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="onClickCancel()" class="cancel">
+            Cancel
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
 </ion-content>

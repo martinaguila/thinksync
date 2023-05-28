@@ -2,6 +2,26 @@
   <app-header
     [labelName]="'ThinkSync'"
   ></app-header>
+
+  <ion-grid class="theme-grid">
+    <ion-row class="sync-title title">
+      <div class="margin-center">
+        ThinkSync
+      </div>
+    </ion-row>
+
+    <ion-row>
+      <ion-button (click)="onClickCreateQuiz()" class="margin-center">
+        Create a quiz
+      </ion-button>
+    </ion-row>
+
+    <ion-row>
+      <ion-button (click)="onClickTakeQuiz()" class="margin-center">
+        Take a quiz
+      </ion-button>
+    </ion-row>
+  </ion-grid>
 </ion-content>
 
 

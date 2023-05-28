@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ThemeService } from '../../services/theme/theme.service';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalController, ToastController } from '@ionic/angular';
 
 @Component({
@@ -35,7 +35,7 @@ export class ClassPage implements OnInit {
       classPasscode: new FormControl("", Validators.required),
     });
     
-
+    // initialize classes
     this.class = JSON.parse(localStorage.getItem("class") || '[]');
    }
 

@@ -43,6 +43,14 @@ const routes: Routes = [
     path: 'class',
     loadChildren: () => import('./modals/class/class.module').then( m => m.ClassPageModule)
   },
+  {
+    path: 'confirmation',
+    loadChildren: () => import('./modals/confirmation/confirmation.module').then( m => m.ConfirmationPageModule)
+  },
+  {
+    path: 'passcode',
+    loadChildren: () => import('./modals/passcode/passcode.module').then( m => m.PasscodePageModule)
+  },
 ];
 
 @NgModule({
