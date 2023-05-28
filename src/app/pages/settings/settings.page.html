@@ -6,7 +6,10 @@
   <ion-grid class="theme-grid">
     <ion-item>
       <ion-label>Dark Theme</ion-label>
-      <ion-toggle [(ngModel)]="isDarkMode" (ionChange)="toggleDarkMode($event)"></ion-toggle>
+      <ion-toggle 
+        [(ngModel)]="isDarkMode" 
+        (ionChange)="toggleDarkMode($event)"
+        ></ion-toggle>
     </ion-item>
   </ion-grid>
 </ion-content>

@@ -125,10 +125,20 @@
   // border-radius: 50px;
   // border: 2px solid #3C00B3;
   --padding-end: 4vw;
+  --padding-start: 4vw;
   --placeholder-color: #858585 !important;
   background: #F3F3F3;
   color: #858585;
   margin-bottom: 8vw;
+}
+
+.quiz-area{
+  --padding-end: 4vw;
+  --padding-start: 4vw;
+  --placeholder-color: #858585 !important;
+  background: #F3F3F3;
+  color: #858585;
+  margin-bottom: 4vw;
 }
 
 .cancel{
@@ -146,4 +156,24 @@
 
 .position-relative{
   position: relative;
+}
+
+.span-error{
+  color: #eb445a;
+  font-size: 3vw;
+  position: absolute;
+  bottom: -5vw;
+}
+
+.class-title{
+  padding: 5vw;
+  color: #000;
+}
+
+.width-100{
+  width: 100%;
+}
+
+.width-200{
+  width: 200px;
 }

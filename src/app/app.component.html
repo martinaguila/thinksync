@@ -11,7 +11,11 @@
         <ion-grid class="theme-grid2">
           <ion-list class="menu-list">
             <ion-menu-toggle auto-hide="false" *ngFor="let menuItem of menuItems">
-              <ion-item class="menu-item" [routerLink]="menuItem.url" routerDirection="root">
+              <ion-item 
+                class="menu-item" 
+                routerDirection="root"
+                (click)="onClickRedirection(menuItem.url)"
+                >
                 <ion-icon class="title" slot="start" [name]="menuItem.icon"></ion-icon>
                 <ion-label class="label title">{{ menuItem.title }}</ion-label>
               </ion-item>

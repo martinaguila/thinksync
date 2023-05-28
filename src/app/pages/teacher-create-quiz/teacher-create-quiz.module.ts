@@ -8,12 +8,15 @@ import { TeacherCreateQuizPageRoutingModule } from './teacher-create-quiz-routin
 
 import { TeacherCreateQuizPage } from './teacher-create-quiz.page';
 
+import { ComponentsModule } from '../../components/component.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TeacherCreateQuizPageRoutingModule
+    TeacherCreateQuizPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [TeacherCreateQuizPage]
 })

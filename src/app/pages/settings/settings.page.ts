@@ -17,16 +17,24 @@ export class SettingsPage implements OnInit {
   constructor(
     private themeService: ThemeService
   ) {
+    // get theme current mode
     this.themeService.getCurrentMode().subscribe(mode => {
       this.currentMode = mode;
     });
+
+    // get toggle last state
+    const toggleLastState = localStorage.getItem('toggleState') === 'true' ? true : false;
+    toggleLastState ? this.isDarkMode = true : this.isDarkMode = false;
+    
    }
 
   ngOnInit() {
   }
 
   toggleDarkMode(event) {
+    // theme toggle event
     const isToggled = event.detail.checked;
+    localStorage.setItem('toggleState', isToggled.toString());
     this.themeService.toggleMode();
   }
 

@@ -1,13 +1,114 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>teacher-create-quiz</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <app-header
+    [labelName]="'Create Quiz'"
+  ></app-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">teacher-create-quiz</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-grid class="theme-grid">
+    <ion-row class="title padding-bottom">
+      <div>
+        Quiz title: <strong>{{quizSetup['quizTitle']}}</strong>
+      </div>
+    </ion-row>
+    <ion-row class="title padding-bottom">
+      <div>
+        Number of items: <strong>{{quizSetup['quizItems']}}</strong>
+      </div>
+    </ion-row>
+    <ion-row class="title padding-bottom">
+      <div>
+        Number of choices: <strong>{{quizSetup['quizChoices']}}</strong>
+      </div>
+    </ion-row>
+    <ion-row class="title padding-bottom">
+      <div>
+        Class: <strong>{{quizSetup['class']}}</strong>
+      </div>
+    </ion-row>
+
+    <!-- <ion-row *ngFor="let items of getTotalItems(); let i = index">
+      <ion-textarea
+      class="quiz-area"
+      placeholder="Enter question {{i+1}}">
+      
+      </ion-textarea>
+      <ion-col *ngFor="let items of getTotalChoices()">
+        <ion-input
+          class="input-class-form"
+          placeholder="">
+
+        </ion-input>
+      </ion-col>
+    </ion-row> -->
+
+    <ion-row>
+      <ion-item class="width-100">
+        <ion-label>Select Quiz Number</ion-label>
+        <ion-select
+          (ionChange)="onSelectQuestion($event)">
+          <ion-select-option 
+            *ngFor="let item of getTotalItems(); let i = index" 
+            [value]="i+1"
+            >Question {{i+1}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-row>
+
+    <div *ngIf="openSetup">
+      <ion-row>
+        <ion-textarea
+        class="quiz-area"
+        placeholder="Enter question"
+        [(ngModel)]="quizQuestion">
+        
+        </ion-textarea>
+        <!-- <ion-col *ngFor="let items of getTotalChoices()">
+          <ion-input
+            class="input-class-form"
+            placeholder="">
+          </ion-input>
+        </ion-col> -->
+        <ion-col *ngFor="let item of choicesValue; let i = index">
+          <ion-input 
+            class="input-class-form" 
+            placeholder=""
+            [(ngModel)]="choicesValue[i].value">
+          </ion-input>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row>
+        <ion-input
+          class="input-class-form"
+          placeholder="Enter letter of correct answer"
+          [(ngModel)]="letterCorrectAnswer">
+        
+        </ion-input>
+      </ion-row>
+  
+      <ion-row>
+        <ion-button 
+          class="margin-center width-200" 
+          (click)="onclickSaveEditQuestion()">
+          {{buttonName}}
+        </ion-button>
+      </ion-row>
+    </div>
+    
+    <ion-row class="margin-top">
+      <ion-col>
+        <ion-button 
+          class="submit" 
+          (click)="onClickPreview()"
+          >
+          Preview
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="onClickCancel()" class="cancel">
+          Cancel
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
