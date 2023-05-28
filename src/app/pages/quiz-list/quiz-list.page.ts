@@ -7,7 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuizListPage implements OnInit {
 
-  constructor() { }
+  quizLists;
+
+  constructor() {
+
+    // initialize quiz setup
+    this.quizLists = JSON.parse(localStorage.getItem("quizes") || '[]');
+    console.log(this.quizLists)
+   }
 
   ngOnInit() {
   }

@@ -1,7 +1,8 @@
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { ToastController, ModalController } from '@ionic/angular';
 import { IonInput } from '@ionic/angular';
+import { QuizPreviewPage } from '../../modals/quiz-preview/quiz-preview.page';
 
 @Component({
   selector: 'app-teacher-create-quiz',
@@ -24,7 +25,8 @@ export class TeacherCreateQuizPage implements OnInit {
 
   constructor(
     private router: Router,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private modalCtrl: ModalController
   ) {
     // initialize quiz setup
     this.quizSetup = JSON.parse(localStorage.getItem("quizSetup") || '[]');
@@ -36,12 +38,13 @@ export class TeacherCreateQuizPage implements OnInit {
     }
     console.log(this.choicesValue)
     this.quiz = [];
+
+    // localStorage.removeItem("quizes")
    }
 
   ionViewDidEnter(){
     // initialize quiz setup
     this.quizSetup = JSON.parse(localStorage.getItem("quizSetup") || '[]');
-    console.log(this.quizSetup);
   }
 
   ngOnInit() {
@@ -56,11 +59,8 @@ export class TeacherCreateQuizPage implements OnInit {
   }
 
   public onClickPreview(): void{
-    // save quiz to local storage
-    // localStorage.setItem("quizSetup", JSON.stringify(this.createDataForm.value));
-    // this.presentToast();
-    // navigate to create quiz
-    // this.router.navigateByUrl("/teacher-create-quiz");
+    // open preview modal
+    this.openPreviewModal();
   }
 
   public onClickCancel(){
@@ -145,15 +145,6 @@ export class TeacherCreateQuizPage implements OnInit {
       // const val = quizValues.choices.inputValues
       this.quiz = this.quiz.map((obj) => {
         if (obj.number === this.quizNumber) {
-          // console.log({
-          //   ...obj,
-          //   question: quizValues[0].question,
-          //   answer: quizValues[0].answer,
-          //   choices: {
-          //     ...obj.choices,
-          //     val,
-          //   },
-          // })
           // Modify the object properties
           return {
             ...obj,
@@ -170,8 +161,56 @@ export class TeacherCreateQuizPage implements OnInit {
       console.log(this.quiz)
       this.presentToast('Modified successful');
     }
+  }
 
-    
+  async openPreviewModal(){
+    console.log(this.quiz)
+    // open modal
+    const modal = await this.modalCtrl.create({
+      component: QuizPreviewPage,
+      cssClass: 'quiz-modal',
+      componentProps: {
+        'quiz': this.quiz
+      },
+      backdropDismiss: false
+    });
+
+    modal.onDidDismiss().then((val) => {
+      console.log(val.data)
+      if (val.data === 'submit'){
+        // save quiz to local storage
+
+        // consolidate quiz questions
+        let consolidatedQuizQuestions = [{
+          "subject": this.quizSetup['quizTitle'],
+          "class": this.quizSetup['class'],
+          "questions": this.quiz
+        }]
+
+        const storedQuizes = JSON.parse(localStorage.getItem("quizes") || '[]');
+
+        if (storedQuizes.length === 0){
+          let finalQuizObj;
+          finalQuizObj = consolidatedQuizQuestions
+          localStorage.setItem("quizes", JSON.stringify(finalQuizObj))
+        }else{
+          let consolidatedQuizQuestions = {
+            "subject": this.quizSetup['quizTitle'],
+            "class": this.quizSetup['class'],
+            "questions": this.quiz
+          }
+
+          storedQuizes.push(consolidatedQuizQuestions);
+          localStorage.setItem("quizes", JSON.stringify(storedQuizes))
+          console.log(storedQuizes)
+        }
+
+        // navigate to create class
+        // this.router.navigateByUrl('/quiz-list')
+      }
+    });
+
+    return await modal.present();
   }
 
 }
