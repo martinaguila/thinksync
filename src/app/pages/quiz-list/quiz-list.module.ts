@@ -8,12 +8,15 @@ import { QuizListPageRoutingModule } from './quiz-list-routing.module';
 
 import { QuizListPage } from './quiz-list.page';
 
+import { ComponentsModule } from '../../components/component.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    QuizListPageRoutingModule
+    QuizListPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [QuizListPage]
 })

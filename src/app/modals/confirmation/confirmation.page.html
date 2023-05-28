@@ -1,13 +1,28 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>confirmation</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">confirmation</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+<div [class]="currentMode">
+  <ion-grid>
+    <ion-row>
+      <div class="class-title">
+        {{ message }}
+      </div>
+    </ion-row>
+  
+    <ion-row>
+      <ion-col>
+        <ion-button 
+          class="submit" 
+          (click)="onClickSubmit()"
+          >
+          Submit
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="onClickCancel()" class="cancel">
+          Cancel
+        </ion-button>
+      </ion-col>
+      
+    </ion-row>
+  </ion-grid>
+  
+</div>
+  

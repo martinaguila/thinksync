@@ -184,7 +184,8 @@ export class TeacherCreateQuizPage implements OnInit {
         let consolidatedQuizQuestions = [{
           "subject": this.quizSetup['quizTitle'],
           "class": this.quizSetup['class'],
-          "questions": this.quiz
+          "questions": this.quiz,
+          "items": this.quizSetup['quizItems']
         }]
 
         const storedQuizes = JSON.parse(localStorage.getItem("quizes") || '[]');
@@ -193,20 +194,22 @@ export class TeacherCreateQuizPage implements OnInit {
           let finalQuizObj;
           finalQuizObj = consolidatedQuizQuestions
           localStorage.setItem("quizes", JSON.stringify(finalQuizObj))
+          console.log("finalQuizObj", finalQuizObj)
         }else{
           let consolidatedQuizQuestions = {
             "subject": this.quizSetup['quizTitle'],
             "class": this.quizSetup['class'],
-            "questions": this.quiz
+            "questions": this.quiz,
+            "items": this.quizSetup['quizItems']
           }
 
           storedQuizes.push(consolidatedQuizQuestions);
           localStorage.setItem("quizes", JSON.stringify(storedQuizes))
-          console.log(storedQuizes)
+          console.log("storedQuizes", storedQuizes)
         }
 
         // navigate to create class
-        // this.router.navigateByUrl('/quiz-list')
+        this.router.navigateByUrl('/quiz-list')
       }
     });
 

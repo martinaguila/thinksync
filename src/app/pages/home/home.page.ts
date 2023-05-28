@@ -13,7 +13,9 @@ export class HomePage {
   constructor(
     private modalCtrl: ModalController,
     private router: Router
-  ) {}
+  ) {
+    // localStorage.removeItem("quizes")
+  }
 
 
   ngOnInit(){

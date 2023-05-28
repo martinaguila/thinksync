@@ -21,12 +21,13 @@ export class SettingsPage implements OnInit {
     this.themeService.getCurrentMode().subscribe(mode => {
       this.currentMode = mode;
     });
+   }
 
+  ionViewWillEnter(){
     // get toggle last state
     const toggleLastState = localStorage.getItem('toggleState') === 'true' ? true : false;
     toggleLastState ? this.isDarkMode = true : this.isDarkMode = false;
-    
-   }
+  }
 
   ngOnInit() {
   }
@@ -35,7 +36,14 @@ export class SettingsPage implements OnInit {
     // theme toggle event
     const isToggled = event.detail.checked;
     localStorage.setItem('toggleState', isToggled.toString());
-    this.themeService.toggleMode();
+    // Handle toggle state changes here
+    if (isToggled) {
+      // dark theme
+      this.themeService.toggleMode('light-theme');
+    } else {
+      // light theme
+      this.themeService.toggleMode('dark-theme');
+    }
   }
 
 }
