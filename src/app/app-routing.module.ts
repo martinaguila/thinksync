@@ -51,6 +51,10 @@ const routes: Routes = [
     path: 'passcode',
     loadChildren: () => import('./modals/passcode/passcode.module').then( m => m.PasscodePageModule)
   },
+  {
+    path: 'quiz-preview',
+    loadChildren: () => import('./modals/quiz-preview/quiz-preview.module').then( m => m.QuizPreviewPageModule)
+  },
 ];
 
 @NgModule({

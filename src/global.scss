@@ -32,12 +32,41 @@
     // top: 50%;
     // transform: translate(-50%, -50%);
     margin: auto;
-    height: auto;
+    height: 90vh; /* Set the maximum height of the modal to 90% of the viewport height */
     width: 90%;
     border-radius: 25px;
-    background: #FFFFFF;
+    background: #fff;
   }
 }
+
+.quiz-modal{
+  &::part(content){
+    // position: fixed;
+    // left: 50%;
+    // top: 50%;
+    // transform: translate(-50%, -50%);
+    margin: auto;
+    height: auto; /* Set the maximum height of the modal to 90% of the viewport height */
+    width: 90%;
+    border-radius: 25px;
+    background: #fff;
+  }
+}
+
+.quiz-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.quiz-modal ion-grid {
+  height: auto;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
 
 .no-margin{
   margin: 0;
