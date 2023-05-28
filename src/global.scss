@@ -32,7 +32,7 @@
     // top: 50%;
     // transform: translate(-50%, -50%);
     margin: auto;
-    height: 90vh; /* Set the maximum height of the modal to 90% of the viewport height */
+    height: auto; /* Set the maximum height of the modal to 90% of the viewport height */
     width: 90%;
     border-radius: 25px;
     background: #fff;
@@ -46,7 +46,7 @@
     // top: 50%;
     // transform: translate(-50%, -50%);
     margin: auto;
-    height: auto; /* Set the maximum height of the modal to 90% of the viewport height */
+    height: 90vh; /* Set the maximum height of the modal to 90% of the viewport height */
     width: 90%;
     border-radius: 25px;
     background: #fff;

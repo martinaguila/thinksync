@@ -24,6 +24,11 @@ export class AppComponent {
       icon: 'albums-outline',
     },
     {
+      title: 'Quiz Lists',
+      url: '/quiz-list',
+      icon: 'file-tray-full-outline'
+    },
+    {
       title: 'Settings',
       url: '/settings',
       icon: 'settings-outline',
@@ -42,13 +47,16 @@ export class AppComponent {
   ) {
     // toggle listener
     this.themeService.toggleState$.subscribe((isToggled) => {
+
+      localStorage.getItem("toggleState") === 'true' ? isToggled = true : null;
+      console.log(isToggled)
       // Handle toggle state changes here
       if (isToggled) {
         // dark theme
-        this.themeService.toggleMode();
+        this.themeService.toggleMode('light-theme');
       } else {
         // light theme
-        this.themeService.toggleMode();
+        this.themeService.toggleMode('dark-theme');
       }
     });
 

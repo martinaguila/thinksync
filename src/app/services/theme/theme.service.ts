@@ -17,9 +17,11 @@ export class ThemeService {
     return this.currentModeSubject.asObservable();
   }
 
-  toggleMode() {
-    const currentMode = this.currentModeSubject.value;
+  toggleMode(currentMode) {
+    // const currentMode2 = this.currentModeSubject.value;
+    console.log(currentMode)
     const newMode = currentMode === 'light-theme' ? 'dark-theme' : 'light-theme';
+    console.log(newMode)
     this.currentModeSubject.next(newMode);
   }
 }
