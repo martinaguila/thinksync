@@ -20,6 +20,11 @@ export class QuizListPage implements OnInit {
   selectedClass: string = '';
   selectedIndex;
 
+  // todo
+  // init errors
+  // dd bg color
+  // dd modal bg color
+
   constructor(
     private modalCtrl: ModalController
   ) {
