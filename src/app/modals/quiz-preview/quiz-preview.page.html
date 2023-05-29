@@ -1,6 +1,6 @@
 <div class="quiz-div" [class]="currentMode">
   <div (click)="onClickCancel()" class="icon-holder">
-    <ion-icon name="close-circle-outline"></ion-icon>
+    <ion-icon class="icon" name="close-circle-outline"></ion-icon>
   </div>
   <ion-grid>
     <ion-row>
@@ -9,7 +9,7 @@
       </div>
     </ion-row>
 
-    <ion-row *ngFor="let item of quiz">
+    <ion-row class="class-title" *ngFor="let item of quiz">
       <ion-col>
         <ion-label>
           {{ item.number }}. {{ item.question }}

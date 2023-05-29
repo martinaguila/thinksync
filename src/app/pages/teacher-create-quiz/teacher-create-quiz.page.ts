@@ -15,9 +15,9 @@ export class TeacherCreateQuizPage implements OnInit {
 
   quizSetup: any;
   quiz: any;
-  quizQuestion;
+  quizQuestion: string = '';
   choicesValue: any[] = []; // Array to hold the input values
-  letterCorrectAnswer;
+  letterCorrectAnswer: string = '';
   quizChoices;
   quizNumber;
   openSetup: boolean = false;
