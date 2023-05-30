@@ -37,7 +37,8 @@ export class HomePage {
       component: PasscodePage,
       cssClass: 'small-modal',
       componentProps: {
-        'urlToNavigate': "/teacher-create-quiz"
+        'urlToNavigate': "/teacher-create-quiz",
+        'passCodeMode': 'teacher'
       },
       backdropDismiss: false
     });
@@ -54,7 +55,7 @@ export class HomePage {
   }
 
   public onClickTakeQuiz(): void{
-
+    this.router.navigateByUrl('/student-setup-quiz');
   }
 
 }

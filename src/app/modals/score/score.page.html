@@ -1,0 +1,26 @@
+<div [class]="currentMode">
+  <ion-grid class="margin-center">
+    <ion-row>
+      <div class="class-title margin-center">
+        Quiz Score
+      </div>
+    </ion-row>
+
+    <ion-row>
+      <div class="content margin-center">
+        You got out {{quizRecord['totalScore']}} of {{quizRecord['totalItems']}} !
+      </div>
+    </ion-row>
+  
+    <ion-row class="margins">
+      <ion-button 
+        class="submit margin-center" 
+        (click)="onClickClose()"
+        >
+        Close
+      </ion-button>
+    </ion-row>
+  </ion-grid>
+  
+</div>
+    

@@ -54,7 +54,11 @@ const routes: Routes = [
   {
     path: 'quiz-preview',
     loadChildren: () => import('./modals/quiz-preview/quiz-preview.module').then( m => m.QuizPreviewPageModule)
+  },  {
+    path: 'score',
+    loadChildren: () => import('./modals/score/score.module').then( m => m.ScorePageModule)
   },
+
 ];
 
 @NgModule({

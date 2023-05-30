@@ -94,7 +94,8 @@ export class AppComponent {
       component: PasscodePage,
       cssClass: 'small-modal',
       componentProps: {
-        'urlToNavigate': "/teacher-create-class"
+        'urlToNavigate': "/teacher-create-class",
+        'passCodeMode': 'teacher'
       },
       backdropDismiss: false
     });
