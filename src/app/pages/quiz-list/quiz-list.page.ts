@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PasscodePage } from '../../modals/passcode/passcode.page';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { ConfirmationPage } from '../../modals/confirmation/confirmation.page';
 
 @Component({
@@ -15,10 +15,12 @@ export class QuizListPage implements OnInit {
   quizListsDisplay;
   openLists: boolean = false;
   quizRecords;
-  openNoRecord: boolean = false;
+  hasRecord: boolean = false;
   isSelected: boolean = false;
   selectedClass: string = '';
   selectedIndex;
+  openRecord: boolean = false;
+  quizRecordDisplay;
 
   // todo
   // init errors
@@ -26,7 +28,8 @@ export class QuizListPage implements OnInit {
   // dd modal bg color
 
   constructor(
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private toastCtrl: ToastController
   ) {
 
     // this.quizLists = 
@@ -166,6 +169,7 @@ export class QuizListPage implements OnInit {
    }
 
   ionViewWillEnter(){
+    // localStorage.removeItem('quizRecord');
     this.selectedClass = '';
     this.openLists = false;
     this.isSelected = false;
@@ -176,11 +180,12 @@ export class QuizListPage implements OnInit {
     // initialize classes
     this.classLists = JSON.parse(localStorage.getItem("class") || '[]');
 
+    // initialize records
+    this.quizRecords = JSON.parse(localStorage.getItem("quizRecord") || '[]');
+    console.log(this.quizRecords)
   }
 
   ngOnInit() {
-    // initialize records
-    this.quizRecords = JSON.parse(localStorage.getItem("quizRecord") || '[]');
     window.addEventListener('storage', this.handleStorageChange.bind(this));
   }
 
@@ -188,7 +193,7 @@ export class QuizListPage implements OnInit {
     // get quiz which belongs to the class selected
     // display message if no record found
     this.isSelected = true;
-    this.openNoRecord = false;
+    this.openRecord = false;
 
     this.selectedClass = e.detail.value;
     this.quizListsDisplay = this.quizLists.filter(x=> x.class == e.detail.value);
@@ -199,9 +204,16 @@ export class QuizListPage implements OnInit {
   public openQuizRecord(i: number): void{
     // open quiz records
     // display message if quiz is not yet taken
+    this.openRecord = !this.openRecord;
     this.selectedIndex = i;
-    if (this.quizRecords.length === 0){
-      this.openNoRecord = !this.openNoRecord;
+    this.quizRecordDisplay = this.quizRecords.filter(x=> x.quizIndex === i);
+    console.log(this.quizRecordDisplay)
+    if (this.quizRecordDisplay.length > 0){
+      this.hasRecord = true;
+      // this.openRecord = !this.openRecord;
+    }else if (this.quizRecordDisplay.length === 0){
+      this.hasRecord = false;
+      // this.openNoRecord = !this.openNoRecord;
     }
   }
 
@@ -215,7 +227,8 @@ export class QuizListPage implements OnInit {
       component: PasscodePage,
       cssClass: 'small-modal',
       componentProps: {
-        'urlToNavigate': ""
+        'urlToNavigate': "",
+        'passCodeMode': 'teacher'
       },
       backdropDismiss: false
     });
@@ -248,7 +261,7 @@ export class QuizListPage implements OnInit {
         // delete quiz
         this.deleteQuiz(i);
 
-        // insert toast here
+        this.presentToast();
       }
     });
 
@@ -279,6 +292,17 @@ export class QuizListPage implements OnInit {
       console.log('Updated class:', classLists);
       // Perform any necessary actions with the updated data
     }
+  }
+
+  // method to display the toast
+  async presentToast() {
+    const toast = await this.toastCtrl.create({
+      message: 'Quiz deleted!',
+      duration: 2000, // Duration in milliseconds (e.g., 2000 = 2 seconds)
+      color: 'dark' // Set the color to 'dark' for a black-colored toast
+    });
+
+    toast.present();
   }
 
 }

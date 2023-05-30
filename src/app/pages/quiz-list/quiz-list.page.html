@@ -46,9 +46,24 @@
               class="icon" 
               name="trash-outline"></ion-icon>
           </ion-col>
+          
+          <span class="message title" *ngIf="selectedIndex === i && openRecord && !hasRecord">
+            <ion-row>
+              <ion-col>
+                Quiz not yet taken
+              </ion-col>
+            </ion-row>
+          </span>
 
-          <span class="message title" *ngIf="selectedIndex === i && openNoRecord">
-            Quiz not yet taken
+          <span class="message2 title" *ngIf="selectedIndex === i && openRecord && hasRecord">
+            <ion-row>
+              <ion-col size="8">
+                Name: {{quizRecordDisplay[0]['studentName']}}
+              </ion-col>
+              <ion-col size="4">
+                Score: {{quizRecordDisplay[0]['totalScoreDisplay']}}
+              </ion-col>
+            </ion-row>
           </span>
         </ion-row>
       </ng-container>
