@@ -18,6 +18,8 @@ export class StudentSetupQuizPage implements OnInit {
   openQuiz: boolean = false;
   quizListsDisplay;
   passCode;
+  quizRecords;
+  includedQuiz: number[] = [];
 
   constructor(
     private router: Router,
@@ -41,6 +43,16 @@ export class StudentSetupQuizPage implements OnInit {
     // initialize classes
     this.classLists = JSON.parse(localStorage.getItem("class") || '[]');
     console.log(this.classLists, this.quizLists)
+
+    // initialize records
+    this.quizRecords = JSON.parse(localStorage.getItem("quizRecord") || '[]');
+    console.log(this.quizRecords)
+
+    this.quizRecords.forEach((question: any, index: number) => {
+      this.includedQuiz.push(question['quizIndex']);
+    });
+
+    console.log(this.includedQuiz)
   }
 
   public onClickCancel(): void{
@@ -88,5 +100,41 @@ export class StudentSetupQuizPage implements OnInit {
     });
 
     return await modal.present();
+  }
+
+  public checkQuiz(index: number): boolean{
+    console.log(this.quizRecords)
+    let wakoko: number[] = [];
+    this.quizRecords.forEach((question: any, index: number) => {
+      console.log(question);
+      wakoko.push(question['quizIndex']);
+    });
+    console.log(wakoko)
+    // check if quiz is already taken
+    // remove quiz if already taken
+    // console.log(this.quizRecords)
+    // const quizIndex = this.quizRecords[i] && this.quizRecords[i].quizIndex;
+    // console.log(quizIndex)
+    // return quizIndex !== undefined && i === quizIndex;
+
+    let quizIndex
+    // if (this.quizRecords[i] !== undefined){
+    //   quizIndex = this.quizRecords[i].quizIndex;
+    //   console.log(quizIndex)
+      
+    // }
+    // console.log(i, quizIndex)
+    // return i === quizIndex;
+    for(let j = 0; j < this.quizRecords.length; j++){
+      quizIndex = this.quizRecords[j].quizIndex;
+      
+      
+    }
+    console.log(index === quizIndex)
+    return index === quizIndex
+
+  //   const quizIndex = this.quizRecords[1] && this.quizRecords[1].quizIndex;
+  //   console.log(quizIndex)
+  // return quizIndex !== undefined && index === quizIndex;
   }
 }
