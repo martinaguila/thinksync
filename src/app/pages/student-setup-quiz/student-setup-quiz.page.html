@@ -34,7 +34,7 @@
             formControlName="quiz">
               <div *ngFor="let item of quizLists; let i = index" >
                 <ion-select-option 
-                  *ngIf="item.class === selectedClass"
+                  *ngIf="item.class === selectedClass && !includedQuiz.includes(i)"
                   [value]="i"
                 >{{item.subject}}
               </ion-select-option>

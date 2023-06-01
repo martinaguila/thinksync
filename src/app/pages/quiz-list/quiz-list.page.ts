@@ -22,11 +22,6 @@ export class QuizListPage implements OnInit {
   openRecord: boolean = false;
   quizRecordDisplay;
 
-  // todo
-  // init errors
-  // dd bg color
-  // dd modal bg color
-
   constructor(
     private modalCtrl: ModalController,
     private toastCtrl: ToastController
@@ -276,6 +271,8 @@ export class QuizListPage implements OnInit {
     // check if quiz has still record
     this.quizListsDisplay = this.quizLists.filter(x=> x.class == this.selectedClass);
     this.quizListsDisplay.length > 0 ? this.openLists = true : this.openLists = false;
+
+    localStorage.setItem("quizes",JSON.stringify(this.quizLists));
   }
 
   handleStorageChange(event: StorageEvent) {
