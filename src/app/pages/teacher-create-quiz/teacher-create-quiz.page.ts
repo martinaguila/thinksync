@@ -185,7 +185,8 @@ export class TeacherCreateQuizPage implements OnInit {
           "subject": this.quizSetup['quizTitle'],
           "class": this.quizSetup['class'],
           "questions": this.quiz,
-          "items": this.quizSetup['quizItems']
+          "items": this.quizSetup['quizItems'],
+          "active": true
         }]
 
         const storedQuizes = JSON.parse(localStorage.getItem("quizes") || '[]');
@@ -200,7 +201,8 @@ export class TeacherCreateQuizPage implements OnInit {
             "subject": this.quizSetup['quizTitle'],
             "class": this.quizSetup['class'],
             "questions": this.quiz,
-            "items": this.quizSetup['quizItems']
+            "items": this.quizSetup['quizItems'],
+            "active": true
           }
 
           storedQuizes.push(consolidatedQuizQuestions);

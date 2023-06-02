@@ -29,7 +29,7 @@
       <ng-container *ngFor="let item of quizLists; let i = index">
         <ion-row 
           class="width-100 list-item"
-          *ngIf="item.class === selectedClass">
+          *ngIf="item.class === selectedClass && item.active">
           <ion-col size="10" (click)="openQuizRecord(i)">
             <ion-row>
               <ion-col size="7.5">
