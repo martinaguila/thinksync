@@ -191,7 +191,7 @@ export class QuizListPage implements OnInit {
     this.openRecord = false;
 
     this.selectedClass = e.detail.value;
-    this.quizListsDisplay = this.quizLists.filter(x=> x.class == e.detail.value);
+    this.quizListsDisplay = this.quizLists.filter(x=> x.class == e.detail.value && x.active);
     this.quizListsDisplay.length > 0 ? this.openLists = true : this.openLists = false;
     console.log(this.quizListsDisplay);
   }
@@ -265,11 +265,11 @@ export class QuizListPage implements OnInit {
 
   private deleteQuiz(i: number){
     // delete quiz
-    console.log(i)
-    this.quizLists.splice(i, 1);
+    this.quizLists[i].active = false;
+    // this.quizLists.splice(i, 1);
 
     // check if quiz has still record
-    this.quizListsDisplay = this.quizLists.filter(x=> x.class == this.selectedClass);
+    this.quizListsDisplay = this.quizLists.filter(x=> x.class == this.selectedClass && x.active);
     this.quizListsDisplay.length > 0 ? this.openLists = true : this.openLists = false;
 
     localStorage.setItem("quizes",JSON.stringify(this.quizLists));

@@ -20,6 +20,7 @@ export class StudentSetupQuizPage implements OnInit {
   passCode;
   quizRecords;
   includedQuiz: number[] = [];
+  isInputDisabled: boolean = true;
 
   constructor(
     private router: Router,
@@ -27,7 +28,7 @@ export class StudentSetupQuizPage implements OnInit {
   ) {
     // initialize form group
     this.quizSetupDataForm = new FormGroup({
-      studentName: new FormControl("", Validators.required),
+      studentName: new FormControl("Test Student", Validators.required),
       studentClass: new FormControl("", Validators.required),
       quiz: new FormControl("", Validators.required)
     });

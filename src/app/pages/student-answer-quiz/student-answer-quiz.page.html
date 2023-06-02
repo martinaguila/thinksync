@@ -11,7 +11,7 @@
             <div class="question-div">{{i+1}}. {{item.question}}</div>
             <ion-radio-group formControlName="answer_{{i}}">
               <ion-item  
-                *ngFor="let choice of item.choices.inputValues; let j = index">
+                *ngFor="let choice of item.choices.inputValues.slice(0, -1); let j = index">
                 <ion-label>{{ getChoiceLabel(j) }}. {{choice}}</ion-label>
                 <ion-radio [value]="getChoiceLabel(j)"></ion-radio>
               </ion-item>

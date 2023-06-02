@@ -9,7 +9,8 @@
         <ion-input
           class="input-class-form"
           placeholder="Enter student name"
-          formControlName="studentName">
+          formControlName="studentName"
+          [readonly]="isInputDisabled">
         </ion-input>
       </ion-row>
   
@@ -34,7 +35,7 @@
             formControlName="quiz">
               <div *ngFor="let item of quizLists; let i = index" >
                 <ion-select-option 
-                  *ngIf="item.class === selectedClass && !includedQuiz.includes(i)"
+                  *ngIf="item.class === selectedClass && !includedQuiz.includes(i) && item.active"
                   [value]="i"
                 >{{item.subject}}
               </ion-select-option>
