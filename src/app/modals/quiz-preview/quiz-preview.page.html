@@ -14,7 +14,7 @@
         <ion-label>
           {{ item.number }}. {{ item.question }}
         </ion-label>
-        <ion-row *ngFor="let choice of item.choices.inputValues.slice(0, -1); let i = index">
+        <ion-row *ngFor="let choice of item.choices.inputValues; let i = index">
           <ion-label>
             {{ getChoiceLabel(i) }}. {{ choice }}
           </ion-label>

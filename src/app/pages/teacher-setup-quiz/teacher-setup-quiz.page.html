@@ -15,7 +15,7 @@
       </div>
 
       <ion-row class="no-margin">
-        <ion-col class="no-margin">
+        <ion-col class="no-margin padding-0">
           <ion-input
             class="input-class-form"
             placeholder="Enter no. of items"
@@ -23,17 +23,29 @@
             type="number">
           </ion-input>
         </ion-col>
-        <ion-col class="no-margin">
+        <!-- <ion-col class="no-margin">
           <ion-input
             class="input-class-form"
             placeholder="Enter no. of choices"
             formControlName="quizChoices"
             type="number">
           </ion-input>
-        </ion-col>
+        </ion-col> -->
       </ion-row>
 
       <ion-row>
+        <ion-item class="width-100">
+          <ion-label>Pick No. of Choices</ion-label>
+          <ion-select formControlName="quizChoices">
+            <ion-select-option 
+              *ngFor="let item of choicesSelection" 
+              [value]="item">{{item}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-row>
+
+      <ion-row class="margin-top"> 
         <ion-item class="width-100">
           <ion-label>Select Class</ion-label>
           <ion-select formControlName="class">

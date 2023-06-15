@@ -22,6 +22,7 @@ export class TeacherCreateQuizPage implements OnInit {
   quizNumber;
   openSetup: boolean = false;
   buttonName: string = "Save";
+  selectedOption: string = '';
 
   constructor(
     private router: Router,
@@ -80,6 +81,7 @@ export class TeacherCreateQuizPage implements OnInit {
   }
 
   public onSelectQuestion(e): void{
+    console.log(this.quiz)
     this.buttonName = 'Save'
     // clear all fields
     this.quizQuestion = '';
@@ -87,6 +89,7 @@ export class TeacherCreateQuizPage implements OnInit {
       choice.value = '';
     }
     this.letterCorrectAnswer = '';
+    this.selectedOption = 'sss';
 
     this.quizNumber = e.detail.value;
     this.openSetup = true;
@@ -104,8 +107,9 @@ export class TeacherCreateQuizPage implements OnInit {
         this.buttonName = 'Edit';
         this.quizQuestion = quizValue[0].question;
         this.letterCorrectAnswer = quizValue[0].answer;
+        this.selectedOption = quizValue[0].answer;
         this.choicesValue = []
-        for(let i = 0; i < quizValue[0].choices['inputValues'].length - 1; i++){
+        for(let i = 0; i < quizValue[0].choices['inputValues'].length; i++){
           console.log(quizValue[0].choices[i])
           this.choicesValue.push({ value: quizValue[0].choices['inputValues'][i]});
         }
@@ -216,6 +220,14 @@ export class TeacherCreateQuizPage implements OnInit {
     });
 
     return await modal.present();
+  }
+
+  public getChoiceLabel(index: number): string {
+    return String.fromCharCode(97 + index);
+  }
+
+  public onSelectAnswer(e): void{
+    this.letterCorrectAnswer = e.detail.value;
   }
 
 }

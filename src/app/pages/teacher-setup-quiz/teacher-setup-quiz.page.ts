@@ -14,6 +14,7 @@ export class TeacherSetupQuizPage implements OnInit {
   class: any;
   error: boolean = false;
   selectedClass: string = '';
+  choicesSelection: Array<any> = [2,3,4]
 
   constructor(
     private router: Router,
