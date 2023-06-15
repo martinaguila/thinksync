@@ -58,7 +58,7 @@
       <ion-row>
         <ion-textarea
         class="quiz-area"
-        placeholder="Enter question"
+        placeholder="Type your question here"
         [(ngModel)]="quizQuestion">
         
         </ion-textarea>
@@ -71,22 +71,37 @@
         <ion-col *ngFor="let item of choicesValue; let i = index">
           <ion-input 
             class="input-class-form" 
-            placeholder=""
+            placeholder="{{getChoiceLabel(i)}}."
             [(ngModel)]="choicesValue[i].value">
           </ion-input>
         </ion-col>
       </ion-row>
   
-      <ion-row>
+      <!-- <ion-row>
         <ion-input
           class="input-class-form"
           placeholder="Enter letter of correct answer"
           [(ngModel)]="letterCorrectAnswer">
         
         </ion-input>
+      </ion-row> -->
+
+      <ion-row> 
+        <ion-item class="width-100">
+          <ion-label>Select Correct Answer</ion-label>
+          <ion-select
+            (ionChange)="onSelectAnswer($event)"
+            [value]="letterCorrectAnswer">
+            <ion-select-option 
+              *ngFor="let item of getTotalChoices(); let i = index" 
+              [value]="getChoiceLabel(i)"
+              >{{getChoiceLabel(i).toUpperCase()}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
       </ion-row>
   
-      <ion-row>
+      <ion-row class="margin-top">
         <ion-button 
           class="margin-center width-200" 
           (click)="onclickSaveEditQuestion()">
